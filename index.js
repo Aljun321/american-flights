@@ -17,7 +17,7 @@ connectionMySQL.connect(function(error) {
   console.log("Connected to MySQL!")
 })
 
-app.get('/flights', (request, response) => {
+app.get('/api/flights', (request, response) => {
   let flights = []
   var destination = request.query.destination
     
@@ -64,13 +64,13 @@ app.get('/flights', (request, response) => {
     })
 })
 
-app.post('/flights', (request, response) => { 
+app.post('/api/flights', (request, response) => { 
   response.json({
     message: "Flight added (but not really)"
   })
 }) 
 
-app.get('/flights/:id', (request, response) => {
+app.get('/api/flights/:id', (request, response) => {
   var id = request.params.id
 
   connectionMySQL.query(`SELECT * FROM american WHERE ID = '${id}'`, function (error, result) {
@@ -92,13 +92,13 @@ app.get('/flights/:id', (request, response) => {
   
 })
 
-app.put('/flights/:id', (request, response) => { 
+app.put('/api/flights/:id', (request, response) => { 
   response.json({
     message: "Flight updated (but not really)"
   })
 }) 
 
-app.delete('/flights/:id', (request, response) => { 
+app.delete('/api/flights/:id', (request, response) => { 
   response.json({
     message: "Flight deleted (but not really)"
   })
